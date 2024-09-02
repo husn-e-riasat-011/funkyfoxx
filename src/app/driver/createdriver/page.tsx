@@ -47,7 +47,7 @@ const CreateDriver = () => {
     };
     try {
       const response = await axios.post(
-        "${process.env.NEXT_PUBLIC_BACKEND_URI}/api/v1/createDriver",
+        `${process.env.NEXT_PUBLIC_BACKEND_URI}/api/v1/createDriver`,
         updatedriver,
       );
 
