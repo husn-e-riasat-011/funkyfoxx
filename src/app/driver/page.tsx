@@ -3,6 +3,7 @@ import DefaultLayout from "@/components/Layouts/DefaultLayout";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
 
 import Link from "next/link";
 interface Driver {
@@ -25,11 +26,27 @@ const Page = () => {
     setdriver(response.data.driver);
   };
   const deldriver = async (id: any) => {
-    await axios.delete(
-      `${process.env.NEXT_PUBLIC_BACKEND_URI}/api/v1/deleteDriver/${id}`,
-    );
-    const singleuser = driver.filter((dri: any) => dri._id !== id);
-    setdriver(singleuser);
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await axios.delete(
+          `${process.env.NEXT_PUBLIC_BACKEND_URI}/api/v1/deleteDriver/${id}`,
+        );
+        setdriver(driver.filter((dri) => dri._id !== id));
+        Swal.fire("Deleted!", "Driver has been deleted.", "success");
+      } catch (error) {
+        Swal.fire("Error!", "Failed to delete the driver.", "error");
+      }
+    }
   };
   useEffect(() => {
     getalldrivers();

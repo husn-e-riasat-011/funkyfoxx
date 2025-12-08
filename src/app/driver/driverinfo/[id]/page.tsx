@@ -38,7 +38,7 @@ const Profile = () => {
   const getsingledriver = async () => {
     try {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URI}/api/v1//getSingleDriver/${id}`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URI}/api/v1/getSingleDriver/${id}`,
       );
       console.log(response.data.driver);
       setDriver(response.data.driver);

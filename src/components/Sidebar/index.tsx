@@ -91,6 +91,25 @@ const menuGroups = [
         icon: (
           <svg
             className="fill-current"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.5 18C6.33 18 7 17.33 7 16.5C7 15.67 6.33 15 5.5 15C4.67 15 4 15.67 4 16.5C4 17.33 4.67 18 5.5 18ZM18.5 18C19.33 18 20 17.33 20 16.5C20 15.67 19.33 15 18.5 15C17.67 15 17 15.67 17 16.5C17 17.33 17.67 18 18.5 18ZM19.44 7.34L17.05 5L19.05 2L16 4.5L14 2L13 5L10.94 3.04L9.5 5.5L8 4L7 6L4.5 5L5.5 7.5L2 8L5 10L4 13L7 12L8 14L10 12L13 15L14 12.5L17 14L16.5 10L20 9.5L18.5 8L19.44 7.34Z"
+              fill=""
+            />
+          </svg>
+        ),
+        label: "Accident",
+        route: "/accident",
+      },
+      {
+        icon: (
+          <svg
+            className="fill-current"
             width="18"
             height="18"
             viewBox="0 0 18 18"
@@ -367,7 +386,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   return (
     <ClickOutside onClick={() => setSidebarOpen(false)}>
       <aside
-        className={`fixed left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-black duration-300 ease-linear dark:bg-boxdark lg:translate-x-0 ${
+        className={`fixed left-0 top-0 z-10 flex h-screen w-72.5 flex-col overflow-y-hidden bg-black duration-300 ease-linear dark:bg-boxdark lg:translate-x-0 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >

@@ -7,6 +7,7 @@ import React, { useEffect, useState } from "react";
 import Loader from "@/components/common/Loader";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/navigation";
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -14,9 +15,25 @@ export default function RootLayout({
 }>) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState<boolean>(true);
+  // const router = useRouter();
 
-  // const pathname = usePathname();
+  // // const pathname = usePathname();
+  // // Check if running in the browser environment
+  // const isBrowser = typeof window !== "undefined";
 
+  // // Check localStorage for authentication status (only in browser)
+  // const isAuthenticated = isBrowser
+  //   ? localStorage?.getItem("token") !== null
+  //   : false;
+
+  // // Redirect to login page if not authenticated
+  // useEffect(() => {
+  //   if (isBrowser && !isAuthenticated) {
+  //     router.replace("/auth/signin"); // Replace with your login page path
+  //   } else {
+  //     setLoading(false); // Mark loading as complete when authenticated or not in browser
+  //   }
+  // }, []);
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
   }, []);
